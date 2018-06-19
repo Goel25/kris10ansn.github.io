@@ -54,14 +54,27 @@ function draw() {
 				snake.show();
 				context.drawImage(head, snake.x, snake.y, scl, scl);
 				
-				setTimeout(function() {
+				setTimeout(() => {
 					snake.showDead();
 					context.drawImage(deadHead, snake.x, snake.y, scl, scl);
 
-					context.font = "50px Arial";
-					context.fillStyle = 'rgb(255, 100, 100)';
-					context.fillText("Refresh Page", canvas.width/2 - 150, canvas.height/2 - 50);
-					context.fillText("(F5)", canvas.width/2 - 45, canvas.height/2);
+					let txt = "YOU DIED";
+
+					context.font = "bold 30px Arial";
+					context.fillStyle = "black";
+					context.fillText(txt, canvas.width/2 - context.measureText(txt).width/2 + 2, canvas.height/2 + 2);
+
+					context.fillStyle = "red";
+					context.fillText(txt, canvas.width/2 - context.measureText(txt).width/2, canvas.height/2);
+
+					let msg = "Press any key to restart";
+
+					context.fillStyle = "black";
+					context.font = "bold 30px Arial";
+					context.fillText(msg, canvas.width/2 - context.measureText(msg).width/2 + 2, canvas.height/2 + 32);
+
+					context.fillStyle = "red";
+					context.fillText(msg, canvas.width/2 - context.measureText(msg).width/2, canvas.height/2 + 30);
 
 				}, 200)
 			}, 200)
@@ -77,7 +90,7 @@ function draw() {
 
 		context.font = "50px Arial";
 		context.fillStyle = 'white';
-		context.fillText("" + score, canvas.width/2 - 20, scl*2);
+		context.fillText("" + score, canvas.width/2 - context.measureText(score).width/2, scl*2);
 
 	}
 
@@ -115,6 +128,9 @@ function keyPressed(key) {
 			if(snake.xv == 0 && !snake.isTaken(1, 0)) {
 				snake.dir(1, 0);
 			}
+			break;
+		default:
+			if(end) { location.reload(); }
 			break;
 	}
 
