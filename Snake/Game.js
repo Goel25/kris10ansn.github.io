@@ -1,10 +1,11 @@
 
 const fps = 8, scl = 30;
-var end = false, canvas, context, snake, apple, score = 0, highScore = 0;
-
+var end = false, canvas, context, snake, apple, score = 0, highScore = 0, size = 18;
 var deadHead = new Image();
 
 window.onload = function() {
+
+	loadScore();
 
 	deadHead.src = './redHead.png';
 
@@ -13,8 +14,8 @@ window.onload = function() {
 	canvas = document.getElementById('canvas');
 	context = canvas.getContext('2d')
 
-	canvas.width = scl*18;
-	canvas.height = scl*18;
+	canvas.width = scl*size;
+	canvas.height = scl*size;
 	
 	snake = new Snake(4);
 	snake.setup();
@@ -58,48 +59,71 @@ function draw() {
 					snake.showDead();
 					context.drawImage(deadHead, snake.x, snake.y, scl, scl);
 
-					let txt = "YOU DIED";
+					displayDeath();
 
-					context.font = "bold 30px Arial";
-					context.fillStyle = "black";
-					context.fillText(txt, canvas.width/2 - context.measureText(txt).width/2 + 2, canvas.height/2 + 2);
-
-					context.fillStyle = "red";
-					context.fillText(txt, canvas.width/2 - context.measureText(txt).width/2, canvas.height/2);
-
-					let msg = "Press any key to restart";
-
-					context.fillStyle = "black";
-					context.font = "bold 30px Arial";
-					context.fillText(msg, canvas.width/2 - context.measureText(msg).width/2 + 2, canvas.height/2 + 32);
-
-					context.fillStyle = "red";
-					context.fillText(msg, canvas.width/2 - context.measureText(msg).width/2, canvas.height/2 + 30);
-
+					saveScore();
 				}, 200)
 			}, 200)
 
 			context.font = "50px Arial";
 			context.fillStyle = 'white';
-			context.fillText("" + score, canvas.width/2 - 17, scl*2);
+			context.fillText("" + score, canvas.width/2 - context.measureText(score).width/2, scl*2);
 		}
 
 		if(score > highScore) {
 			highScore = score;
+			saveScore();
 		}
 
 		context.font = "50px Arial";
 		context.fillStyle = 'white';
 		context.fillText("" + score, canvas.width/2 - context.measureText(score).width/2, scl*2);
 
+		context.font = "25px Arial";
+		context.fillText("High score: " + highScore, canvas.width/2 - context.measureText("High score: " + highScore).width/2, scl*3);
+
 	}
 
 
 }
 
+function displayDeath() {
+
+	let txt = "YOU DIED";
+
+	context.font = "bold 30px Arial";
+	context.fillStyle = "black";
+	context.fillText(txt, canvas.width/2 - context.measureText(txt).width/2 + 2, canvas.height/2 + 2);
+
+	context.fillStyle = "red";
+	context.fillText(txt, canvas.width/2 - context.measureText(txt).width/2, canvas.height/2);
+
+	let msg = "Press any key to restart";
+
+	context.fillStyle = "black";
+	context.font = "bold 30px Arial";
+	context.fillText(msg, canvas.width/2 - context.measureText(msg).width/2 + 2, canvas.height/2 + 32);
+
+	context.fillStyle = "red";
+	context.fillText(msg, canvas.width/2 - context.measureText(msg).width/2, canvas.height/2 + 30);
+
+}
+
+function saveScore() {
+	if(localStorage._hscore == null) { localStorage._hscore = 0; } else if(highScore == null) {highScore = 0;}
+	if(score > localStorage._hscore) { localStorage._hscore = score; console.log("test");}
+}
+
+function loadScore() {
+	if(localStorage._hscore == null) { highScore = 0; return;}
+	highScore = localStorage._hscore;
+}
+
 function keyPressed(key) {
 
 	this.keyCode = key.keyCode;
+
+	if(end) { location.reload(); }
 
 	switch(this.keyCode) {
 		case 38: //up
@@ -128,9 +152,6 @@ function keyPressed(key) {
 			if(snake.xv == 0 && !snake.isTaken(1, 0)) {
 				snake.dir(1, 0);
 			}
-			break;
-		default:
-			if(end) { location.reload(); }
 			break;
 	}
 
