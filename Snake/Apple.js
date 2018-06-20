@@ -11,5 +11,11 @@ function Apple() {
 	this.newLoc = function() {
 		this.x = Math.round((Math.random()*(canvas.width/scl - 2)) + 1) * scl;
 		this.y = Math.round((Math.random()*(canvas.height/scl - 2)) + 1) * scl;
+		
+		for(let i = 0; i < blocks.length; i++) {
+			if(this.x == blocks[i].x && this.y == blocks[i].y) {
+				this.newLoc();
+			}
+		}
 	}
 }
