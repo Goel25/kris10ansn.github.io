@@ -94,7 +94,7 @@ function p_end() {
 			ctx.fillText("High Score: " + phscore, canvas.width/2 - ctx.measureText("High Score: " + phscore).width/2, ty + 125);
 
 			//Keys per second text
-			let kps = "You typed " + (pscore/rtime).toFixed(4) + " right keys per second!";
+			let kps = "You clicked your mouse " + (pscore/rtime).toFixed(4) + " times per second!";
 
 			ctx.fillStyle = 'white';
 			ctx.font = '20px Arial';
