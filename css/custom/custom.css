@@ -1,0 +1,137 @@
+.navbar ul {
+	text-transform: uppercase;
+}
+
+.jumbotron {
+	text-align: center;
+	font-family: 'Arvo', serif;
+
+	color: white;
+	padding-top: 100px;
+	padding-bottom: 100px;
+	margin-bottom: 0px;
+	background-image: url(../../images/background_image.jpg);
+	background-size: 100%;
+}
+
+.jumbotron h1 {
+	padding-top: 50px;
+	padding-bottom: 50px;
+
+	margin-left: 100px;
+	margin-right: 100px;
+
+	font-weight: 1;
+	font-size: 63px;
+}
+
+.jumbotron p {
+	font-size: 21px;
+	font-weight: 50;
+
+	margin-left: 30px;
+	margin-right: 30px;
+	margin-bottom: 30px;
+
+	padding: 0 50px;
+}
+
+.desc strong {
+	color: #ff6666;
+	text-shadow: 1px 1px 1px #000000
+}
+
+.btn-danger {
+	font-size: 30px;
+}
+
+.homepage {
+	text-align: center;
+	padding-top: 48px;
+}
+
+.container {
+	font-family: 'Arvo', serif;
+}
+
+.homepage h2 {
+	font-size: 40px;
+	text-transform: uppercase;
+	color: #f24141;
+
+	padding-bottom: 15px;
+}
+
+.homepage h3 {
+	color: #f24141;
+	text-transform: uppercase;
+	font-size: 25px;
+}
+
+.homepage p {
+	font-size: 17px;
+}
+
+.homepage a:hover {
+	opacity: 0.8;
+	text-decoration: unset;
+}
+
+a:focus {
+	/* To remove underline after clicked */
+	text-decoration: unset;
+}
+
+.homepage a {
+	color: #f24141;
+}
+
+.container hr {
+	border-top: 1px solid #e74c3d;
+    width: 125px;
+    margin-top: 15px;
+
+    padding-bottom: 15px;
+}
+
+.games {
+	background-color: #ffffff;
+}
+.games p {
+	color: black;
+}
+
+#helpers {
+	background-color: #f2f2f2;
+}
+
+#who {
+	padding-top: 75px;
+	padding-bottom: 100px;
+	background-color: #f2f2f2;
+}
+
+#footer {
+	padding-top: 200px;
+	padding-bottom: 75px;
+	background-color: #f24141;
+
+}
+
+#footer h1 {
+	color: white;
+	font-size: 40px;
+}
+
+#footer p {
+	color: white;
+	font-weight: 10;
+	font-size: 15px;
+}
+
+.snake h3{
+	color: green;
+}
+.snake a {
+	color: green;
+}
