@@ -4,7 +4,7 @@
 
 .jumbotron {
 	text-align: center;
-	font-family: 'Arvo', serif;
+	font-family: sans-serif;
 
 	color: white;
 	padding-top: 100px;
@@ -51,7 +51,7 @@
 }
 
 .container {
-	font-family: 'Arvo', serif;
+	font-family: sans-serif;
 }
 
 .homepage h2 {
