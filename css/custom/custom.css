@@ -72,7 +72,7 @@
 	font-size: 17px;
 }
 
-.homepage a:hover {
+a:hover {
 	opacity: 0.8;
 	text-decoration: unset;
 }
