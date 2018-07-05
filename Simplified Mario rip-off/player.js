@@ -103,6 +103,15 @@ class Player {
 		}
 	}
 
+	touchMush() {
+		for(let i = 0; i < this.height; i++) {
+			if(Math.round(this.y) + i == Math.round(mushroom.y) && Math.round(this.x) == Math.round(mushroom.x)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	right() {
 		if(this.xv < this.speed*3) { this.xv += this.speed; }
 	}
