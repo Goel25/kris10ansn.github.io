@@ -41,6 +41,10 @@
 	text-shadow: 1px 1px 1px #000000
 }
 
+.homepage strong {
+	color: #f24141;
+}
+
 .btn-danger {
 	font-size: 30px;
 }
