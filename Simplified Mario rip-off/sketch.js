@@ -41,7 +41,7 @@ function draw() {
 
 	if(mushroom != null) {
 		mushroom.draw();
-		if(Math.round(player.x) == Math.round(mushroom.x) && Math.round(player.y) == Math.round(mushroom.y)) {
+		if(player.touchMush()) {
 			mushroom = null;
 			player.height = 3;
 		}
