@@ -90,7 +90,7 @@ class Player {
 	collide() {
 
 		for(let i = 0; i < this.height; i++) {
-			if(map[Math.floor(this.y) - i][Math.round(this.x)] !== 0) {
+			if(map[Math.floor(this.y) - i][Math.floor(this.x)] !== 0 || map[Math.floor(this.y) - i][Math.ceil(this.x)] !== 0) {
 				return true;
 			}
 		}
