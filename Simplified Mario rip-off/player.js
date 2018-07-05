@@ -24,6 +24,11 @@ class Player {
 	}
 
 	update() {
+		//Check if player out of bounds
+		if(Math.floor(this.x) < 0) { this.x = 0; this.xv = 0; }
+		if(Math.ceil(this.x) > map[0].length - 1) { this.x = map[0].length - 1; this.xv = 0;}
+		if(Math.ceil(this.y) > map.length - 1) { this.y = map.length - 1; this.yv = 0;}
+		if(Math.floor(this.y) < 0) { this.y = 0; this.yv = 0; }
 
 		this.y += this.yv;
 
@@ -67,9 +72,6 @@ class Player {
 			}
 		}
 
-		//Check if player out of bounds
-		if(Math.floor(this.x) < 0) { this.x = 0; this.xv = 0; }
-		if(Math.ceil(this.x) > map[0].length - 1) { this.x = map[0].length - 1; this.xv = 0;}
 
 		//friction
 		this.xv *= 0.9;
