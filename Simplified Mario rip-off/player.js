@@ -31,7 +31,8 @@ class Player {
 		if(Math.floor(this.y) < 0) { this.y = 0; this.yv = 0; }
 
 		this.y += this.yv;
-
+		
+		//The following code might have been more clean using some sort of recursive function
 		if(this.collide()) {
 			let old = {
 				y: this.y,
@@ -42,7 +43,7 @@ class Player {
 			this.y = Math.round(this.y);
 			this.y--;
 			this.yv = 0;
-
+			
 			if(this.collide()) {
 				this.y = old.y;
 				this.yv = old.yv;
