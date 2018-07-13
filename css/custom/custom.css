@@ -1,3 +1,9 @@
+body {
+	background-image: url(../../images/background.png);
+	background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
 .navbar ul {
 	text-transform: uppercase;
 }
@@ -12,10 +18,8 @@
 	padding-top: 100px;
 	padding-bottom: 100px;
 	margin-bottom: 0px;
-	background-image: url(../../images/background.png);
-	background-repeat: no-repeat;
-    background-attachment: fixed;
-	background-size: 100%;
+
+	background-color: transparent;
 }
 
 .jumbotron h1 {
@@ -103,11 +107,27 @@ a:focus {
     padding-bottom: 15px;
 }
 
-.games {
+#games {
 	background-color: #ffffff;
 }
-.games p {
-	color: black;
+
+.games {
+	padding-bottom: 50px;
+}
+
+.games p, .games h3, .games a {
+	--padding: 5px;
+
+	padding-top: var(--padding);
+	padding-bottom: var(--padding);
+}
+
+.card {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+	margin: 10px;
+	height: 340px;
+
+	padding-top: 3%;
 }
 
 #helpers {
