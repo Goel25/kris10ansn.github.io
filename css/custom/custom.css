@@ -9,13 +9,12 @@ body {
 }
 
 .jumbotron {
-	height: 99vh;
+	height: 98.5vh;
 
 	text-align: center;
 	font-family: sans-serif;
 
 	color: white;
-	padding-top: 100px;
 	padding-bottom: 100px;
 	margin-bottom: 0px;
 
@@ -51,7 +50,7 @@ body {
 }
 
 .homepage strong {
-	color: #f24141;
+	color: #fa5300;
 }
 
 .btn-danger {
@@ -70,13 +69,13 @@ body {
 .homepage h2 {
 	font-size: 40px;
 	text-transform: uppercase;
-	color: #f24141;
+	color: #fa5300;
 
 	padding-bottom: 15px;
 }
 
 .homepage h3 {
-	color: #f24141;
+	color: #fa5300;
 	text-transform: uppercase;
 	font-size: 25px;
 }
@@ -96,7 +95,7 @@ a:focus {
 }
 
 .homepage a {
-	color: #f24141;
+	color: #fa5300;
 }
 
 .container hr {
@@ -109,6 +108,7 @@ a:focus {
 
 #games {
 	background-color: #ffffff;
+	padding: 50px 50px;
 }
 
 .games {
@@ -137,7 +137,7 @@ a:focus {
 #footer {
 	padding-top: 200px;
 	padding-bottom: 75px;
-	background-color: #f24141;
+	background-color: #222222;
 
 }
 
