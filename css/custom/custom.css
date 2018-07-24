@@ -112,7 +112,7 @@ a:focus {
 }
 
 .games {
-	padding-bottom: 50px;
+	padding-bottom: 50px
 }
 
 .games p, .games h3, .games a {
@@ -122,12 +122,16 @@ a:focus {
 	padding-bottom: var(--padding);
 }
 
-.card {
+div.card {
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
 	margin: 10px;
 	height: 340px;
 
 	padding-top: 3%;
+}
+
+div.card-margin {
+	width: 6.5%;
 }
 
 #helpers {
