@@ -68,23 +68,25 @@
 
   <body>
     <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron" id="welcome">
-      <div class="container">
+    <div class="jumbotron" id="jumbotron">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <h1><span id="smaller">Welcome to</span> <b>Kristian Games™</b></h1>
+        </div>
 
-        <div class="row">
-          <div class="col-md-12">
-            <h1>Welcome to the <strong>Kristian Games™</strong> website!</h1>
-            <p class="desc">Our goal is to make as many <strong>free to play</strong>, <strong>open source</strong> games as possible, just for the fun of it. You can find our games on this website, on the official <a href="https://chrome.google.com/webstore" target="_blank"><strong>Google Webstore</strong></a>, and soon you'll probably even find us on the <a href="https://play.google.com/store/apps" target="_blank"><strong>Google Play Store</strong></a>!</p>
-            <p><a class="btn btn-danger btn-lg" href="#games" role="button">Play now! &raquo;</a></p>
-          </div>
+        <div class="col-md-1">
+          <div class="vr" id="vr-jumbotron"></div>
+        </div>
 
-          <div class="col-md-12" style="padding-top: 5vh;">
-            <a href="#games"><img src="images/angle-down.png" height="75" width="90"></a>
-          </div>
+        <div class="col-md-5">
+          <p>A small library of free, open source games and apps. <a target="_blank" href="#games"><button class="btn btn-primary cta">Play now</button></a></p>
         </div>
 
       </div>
+
     </div>
+  </div>
 
     <div class="background-games">
       <div id="games">
@@ -178,7 +180,7 @@
       <footer id="footer">
         <div class="container">
           <h1>Kristian Games™</h1>
-          <p>- A non-profit foundation</p>
+          <p>- A small library of free games</p>
         </div>
       </footer>
     </div> <!-- /container -->
