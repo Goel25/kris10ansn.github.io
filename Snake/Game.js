@@ -126,12 +126,13 @@ function keyPressed(key) {
 	if(end) { location.reload(); }
 
 	switch(this.keyCode) {
+		case 87:
 		case 38: //up
 			if(snake.yv == 0 && !snake.isTaken(0, -1)) {
 				snake.dir(0, -1);
 			}
 			break;
-		
+		case 65:
 		case 37: //left
 			
 			if(snake.xv == 0 && !snake.isTaken(-1, 0)) {
@@ -139,7 +140,8 @@ function keyPressed(key) {
 			}
 
 			break;
-
+			
+		case 83:
 		case 40: //down
 			
 			if(snake.yv == 0 && !snake.isTaken(0, 1)) {
@@ -147,7 +149,7 @@ function keyPressed(key) {
 			}
 
 			break;
-
+		case 68
 		case 39: //right
 			if(snake.xv == 0 && !snake.isTaken(1, 0)) {
 				snake.dir(1, 0);
