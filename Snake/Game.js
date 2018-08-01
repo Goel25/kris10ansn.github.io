@@ -166,7 +166,7 @@ function keyPressed(key) {
 			}
 
 			break;
-		case 68 //d
+		case 68: //d
 			if(snake.xv == 0 && !snake.isTaken(1, 0)) {
 				snake.dir(1, 0);
 			}
