@@ -8,7 +8,7 @@ body {
 }
 
 .cta {
-	font-size: 50px;
+	font-size: 3.221vw;
 	
 	border-radius: 40px;
 	
@@ -36,7 +36,7 @@ body {
 }
 
 #jumbotron h1 {
-	font-size: 16vh;
+	font-size: 7.475vw;
 	font-weight: 1;
 	line-height: 1.1;
 
@@ -48,11 +48,11 @@ body {
 }
 
 #smaller {
-	font-size: 80px;
+	font-size: 5.154vw;
 }
 
 .jumbotron p {
-	font-size: 47.5px;
+	font-size: 3.02vw;
 	margin-left: 12vh;
 	margin-top: 8vh;
 }
@@ -60,7 +60,7 @@ body {
 div.jumbotron {
 	background-image: url('../../images/poly.png');
 	background-size: 100%;
-	background-repeat: no-repeat;
+	background-repeat: round;
     background-attachment: fixed;
 
     padding: 10vh 20vh;
@@ -193,3 +193,29 @@ div.card-margin {
 .snake a {
 	color: green;
 }
+
+@media screen and (max-width: 999px) {
+	#vr-jumbotron {
+		height: 0px;
+	}
+
+	.jumbotron h1, .jumbotron p {
+		margin-left: 6vw;
+	}
+}
+
+@media screen and (max-width: 1008px)  {
+	#smaller { font-size: 6.75vw; }
+}
+
+@media screen and (max-width: 1137px) { div.jumbotron { height: 100%; } }
+
+@media screen and (max-width: 1008px) { div#jumbotron.jumbotron { text-align: center; } }
+
+@media screen and (min-width: 1008px) { #jumbotron h1 { line-height: 17vh; } }
+
+@media screen and (max-width: 624px) { div#jumbotron.jumbotron { padding: 15vw} }
+
+@media screen and (max-width: 490px) { div#jumbotron.jumbotron { padding: 10vw } }
+
+@media screen and (max-width: 400px) { #games button { visibility: collapse; } }
