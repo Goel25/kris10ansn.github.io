@@ -36,7 +36,7 @@ body {
 }
 
 #jumbotron h1 {
-	font-size: 7.475vw;
+	font-size: 6vw;
 	font-weight: 1;
 	line-height: 1.1;
 
@@ -194,7 +194,7 @@ div.card-margin {
 	color: green;
 }
 
-@media screen and (max-width: 999px) {
+@media screen and (max-width: 1327px) {
 	#vr-jumbotron {
 		height: 0px;
 	}
@@ -219,3 +219,14 @@ div.card-margin {
 @media screen and (max-width: 490px) { div#jumbotron.jumbotron { padding: 10vw } }
 
 @media screen and (max-width: 400px) { #games button { visibility: collapse; } }
+
+@media screen and (min-width: 1700px) { #smaller { font-size: 4.5vw; }}
+
+@media screen and (min-width: 1844px) { #jumbotron p { font-size: 2.8vw; } }
+
+@media screen and (max-width: 1008px) { div.jumbotron { background-image: url('../../images/mobile-poly.png'); }  }
+
+@media only screen and (max-width: 1327px) and (min-width: 992px) { 
+	.cta { font-size: 75%; }
+
+}
