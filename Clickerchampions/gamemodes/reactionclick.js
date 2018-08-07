@@ -54,7 +54,7 @@ function r_draw() {
 function r_keyDown(e) {
 	if(e.key == current && !end) {
 		rscore++;
-		current = newKey();
+		current = newKey(current);
 	}
 	else if(!end) {
 		rscore--;
@@ -63,8 +63,14 @@ function r_keyDown(e) {
 	}
 }
 
-function newKey() {
-	return keys[ Math.round( Math.random() * (keys.length-1) ) ];
+function newKey(prev) {
+	let new = keys[ Math.round( Math.random() * (keys.length-1) ) ];
+	
+	if(new == prev) {
+		return newKey(prev);
+	} else {
+		return new;
+	}
 }
 
 function r_end() {
