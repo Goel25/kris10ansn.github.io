@@ -1,5 +1,5 @@
 const fps = 7, scl = 80;
-var canvas, ctx, tilecount = 14, snake, xc, yc, end = false, ared = 'rgb(255, 50, 50)', score = 0, hscore = 0,
+var canvas, ctx, tilecount = 18, snake, xc, yc, end = false, ared = 'rgb(255, 50, 50)', score = 0, hscore = 0,
 	apple = {
 		x: tilecount - Math.round(tilecount/4),
 		y: tilecount/2,
