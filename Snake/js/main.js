@@ -28,13 +28,7 @@ window.onload = function() {
 
 	snake = new Snake(Math.round(tilecount/3));
 
-	if(localStorage._hscore == null) { 
-		if(hscore == null) {
-			hscore = localStorage._hscore = 0;
-		} else {
-			localStorage._hscore = hscore;
-		}
-	} else { hscore = localStorage._hscore; }
+	if(localStorage._hscore != null && localStorage._hscore != "undefined") { hscore = localStorage._hscore; } else { hscpre = localStorage._hscore = 0; }
 
 	document.addEventListener('keydown', keyPressed);
 	setInterval(game, 1000/fps);
