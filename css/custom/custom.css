@@ -194,6 +194,18 @@ div.card-margin {
 	color: green;
 }
 
+.tetris h3 {
+	color: purple;
+}
+
+.tetris a {
+	color: purple;
+}
+
+.tetris.btn-default {
+	color: purple;
+}
+
 @media screen and (max-width: 1327px) {
 	#vr-jumbotron {
 		height: 0px;
