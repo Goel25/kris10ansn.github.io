@@ -1,0 +1,244 @@
+body {
+	font-family: sans-serif;
+	color: white;
+}
+
+:root {
+	--main-color: #DA40FF;
+}
+
+.cta {
+	font-size: 3.221vw;
+	
+	border-radius: 40px;
+	
+	margin-top: 7vh;
+
+	width: 100%;
+
+	text-transform: uppercase;
+
+	background-color: #7D8AFF;
+	border-color: transparent;
+}
+
+.cta a {
+	color: white;
+}
+
+.vr {
+	border-left: 2px solid #fff;
+	height:65vh;
+}
+
+#vr-jumbotron {
+	margin-left: 16vh;
+}
+
+#jumbotron h1 {
+	font-size: 6vw;
+	font-weight: 1;
+	line-height: 1.1;
+
+	margin-top: 3vh;
+}
+
+#jumbotron b {
+	font-weight: 700;
+}
+
+#smaller {
+	font-size: 5.154vw;
+}
+
+.jumbotron p {
+	font-size: 3.02vw;
+	margin-left: 12vh;
+	margin-top: 8vh;
+}
+
+div.jumbotron {
+	background-image: url('../../images/poly.png');
+	background-size: 100%;
+	background-repeat: round;
+    background-attachment: fixed;
+
+    padding: 10vh 20vh;
+    margin-bottom: 0px;
+
+    height: 98vh;
+}
+
+.desc strong {
+	color: #ff6666;
+	text-shadow: 1px 1px 1px #000000
+}
+
+.homepage strong {
+	color: var(--main-color);
+}
+
+.btn-danger {
+	font-size: 30px;
+}
+
+.homepage {
+	text-align: center;
+	padding-top: 48px;
+}
+
+.container {
+	font-family: sans-serif;
+}
+
+.homepage h2 {
+	font-size: 40px;
+	text-transform: uppercase;
+	color: var(--main-color);
+
+	padding-bottom: 15px;
+}
+
+.homepage h3 {
+	color: var(--main-color);
+	text-transform: uppercase;
+	font-size: 25px;
+}
+
+.homepage p {
+	font-size: 17px;
+}
+
+a:hover {
+	opacity: 0.8;
+	text-decoration: unset;
+}
+
+a:focus {
+	/* To remove underline after clicked */
+	text-decoration: unset;
+}
+
+.homepage a {
+	color: var(--main-color);
+}
+
+.container hr {
+	border-top: 1px solid var(--main-color);
+    width: 125px;
+    margin-top: 15px;
+
+    padding-bottom: 15px;
+}
+
+#games {
+	background-color: #ffffff;
+	padding: 50px 50px;
+
+	color: black;
+}
+
+.games {
+	padding-top: 2vh;
+	padding-bottom: 2vh;
+}
+
+.games p, .games h3, .games a {
+	--padding: 5px;
+	padding-bottom: var(--padding);
+}
+
+div.card {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+	margin: 10px;
+	height: 340px;
+
+	padding-top: 3%;
+}
+
+div.card-margin {
+	width: 6.75%;
+}
+
+#helpers {
+	background-color: #f2f2f2;
+	color: black;
+}
+
+#footer {
+	padding-top: 200px;
+	padding-bottom: 75px;
+	background-color: #222222;
+
+}
+
+#footer h1 {
+	color: white;
+	font-size: 40px;
+}
+
+#footer p {
+	color: white;
+	font-weight: 10;
+	font-size: 15px;
+}
+
+#checkgames {
+	font-size: 20px;
+}
+
+.snake h3{
+	color: green;
+}
+.snake a {
+	color: green;
+}
+
+.tetris h3 {
+	color: purple;
+}
+
+.tetris a {
+	color: purple;
+}
+
+.tetris.btn-default {
+	color: purple;
+}
+
+@media screen and (max-width: 1327px) {
+	#vr-jumbotron {
+		height: 0px;
+	}
+
+	.jumbotron h1, .jumbotron p {
+		margin-left: 6vw;
+	}
+}
+
+@media screen and (max-width: 1008px)  {
+	#smaller { font-size: 6.75vw; }
+}
+
+@media screen and (max-width: 1137px) { div.jumbotron { height: 100%; } }
+
+@media screen and (max-width: 1008px) { div#jumbotron.jumbotron { text-align: center; } }
+
+@media screen and (min-width: 1008px) { #jumbotron h1 { line-height: 17vh; } }
+
+@media screen and (max-width: 624px) { div#jumbotron.jumbotron { padding: 15vw} }
+
+@media screen and (max-width: 490px) { div#jumbotron.jumbotron { padding: 10vw } }
+
+@media screen and (max-width: 400px) { #games button { visibility: collapse; } }
+
+@media screen and (min-width: 1700px) { #smaller { font-size: 4.5vw; }}
+
+@media screen and (min-width: 1844px) { #jumbotron p { font-size: 2.8vw; } }
+
+@media screen and (max-width: 1008px) { div.jumbotron { background-image: url('../../images/mobile-poly.png'); }  }
+
+@media only screen and (max-width: 1327px) and (min-width: 992px) { 
+	.cta { font-size: 75%; }
+
+}
