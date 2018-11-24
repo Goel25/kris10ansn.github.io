@@ -1,0 +1,192 @@
+body {
+	font-family: sans-serif;
+	color: white;
+}
+
+h1 {
+	text-align: center;
+	font-size: 7vh;
+	margin-top: 0;
+}
+
+.start-container {
+	background-color: orange;
+	
+	height: 100vh;
+	width: 100vw;
+
+	padding-top: 27vh;
+
+	/* Text */
+	color: white;
+}
+.start-container h1, .lobby-container h1 {
+	text-shadow: 0px 1px black;
+}
+
+#player-name-tf {
+	width: 40vw;
+	height: 8vh;
+
+	border-radius: 40px;
+	border: 1px solid white;
+
+	padding: 0;
+	margin: auto;
+    display: block;
+
+    font-size: 4vh;
+    text-align: center;
+}
+
+button {
+	height: 5vh;
+
+	border-radius: 40px;
+	border: 1px solid white;
+
+	padding: 0;
+	margin: auto;
+    display: block;
+
+	margin-top: 3vh;
+	padding-left: 30px;
+	padding-right: 30px;
+
+    color: white;
+    font-size: 4vh;
+    text-align: center;
+}
+
+#submit-btn:hover {
+	background-color: #a3a3a3;
+}
+
+
+
+
+
+
+.lobby-container {
+	height: 100vh;
+	width: 100vw;
+
+	background-color: #00ed37;
+}
+
+.lobby-container h1 {
+	padding-top: 10vh;
+}
+
+ul {
+	width: 50vw;
+
+	border-radius: 40px;
+
+	background-color: white;
+
+	padding: 0;
+	margin: auto;
+    display: block;
+}
+
+li {
+	width: 45vw;
+
+	margin-left: 2vw;
+
+	padding-top: 2vh;
+	padding-left: 2vw;
+	
+	display: block;
+
+	background-color: transparent;
+
+	border-radius: 20px;
+
+	font-weight: bold;
+	font-size: 2vh;
+	color: black;
+	
+}
+
+li:hover {
+	background-color: pink;
+}
+
+
+#nolobbies {
+	height: 4vh;
+	color: magenta;
+	padding: 0;
+	text-align: center;
+}
+
+#nolobbies:hover {
+	background-color: transparent;
+}
+
+.game-id {
+	padding-top: 0.5vw
+	font-weight: normal;
+	font-size: 1.5vh;
+	color: gray;
+}
+
+.lobby-container hr {
+	width: 40vw;
+	margin-top: 2vh;
+	margin-left: -1vw;
+}
+
+#create-btn {
+	height: auto;
+	width: auto;
+
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-top: 10px;
+	margin-bottom: 50px;
+}
+
+
+
+
+
+.game-container {
+	height: 100vw;
+	width: 100vw;
+
+	background-color: #f152ff;
+}
+
+#board{
+	border: 1px solid black;
+	border-collapse: collapse;
+
+	margin: auto;
+}
+
+.game-container h1 {
+	padding-top: 10vh;
+}
+
+.game-container h2 {
+	text-align: center;
+}
+
+td {
+	border: 1px solid white;
+	width: 20vh;
+	height: 20vh;
+	padding: 0;
+	
+	text-align: center;
+	font-size: 10vh;
+
+	background-color: transparent;
+}
+
+td:hover {
+	background-color: #ededed;
+}

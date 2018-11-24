@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tic Tac Toe Online!</title>
+
+	<link rel="stylesheet" type="text/css" href="style.css">
+
+	<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-firestore.js"></script>
+
+	<script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
+	<script>
+	  // Initialize Firebase
+	  var config = {
+	    apiKey: "AIzaSyArhkPj4S8Bzg0QQbE8NZYc7_h2Phgv6cE",
+	    authDomain: "tic-tac-toe-cda1a.firebaseapp.com",
+	    databaseURL: "https://tic-tac-toe-cda1a.firebaseio.com",
+	    projectId: "tic-tac-toe-cda1a",
+	    storageBucket: "tic-tac-toe-cda1a.appspot.com",
+	    messagingSenderId: "34623903288"
+	  };
+	  firebase.initializeApp(config);
+	</script>
+
+	<script type="text/javascript" src="js/firebase-handler.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript" src="js/game.js"></script>
+</head>
+<body>
+
+	<div class="start-container">
+		<h1>Enter your name</h1>
+		<form>
+			<input id="player-name-tf" type="text" name="player-name" value="">
+			<button id="submit-btn" type="button" name="submit-btn" onclick="submitbtn();">SUBMIT</button>
+		</form>
+	</div>
+
+	<div class="lobby-container">
+		<h1>Select a game to join</h1>
+
+		<button id="create-btn" type="button" onclick="create(players.self.name)"> + Create</button>
+
+		<ul id="lobbies">
+			<br>
+		</ul>
+
+	</div>
+
+	<div class="game-container">
+		<h1>Tic Tac Toe Online</h1>
+		<h2 id="message"></h2>
+		<table id="board">
+			<tr>
+				<td row="0" column="0" onClick="move(this)"></td>
+				<td row="0" column="1" onClick="move(this)"></td>
+				<td row="0" column="2" onClick="move(this)"></td>
+			</tr>
+			<tr>
+				<td row="1" column="0" onClick="move(this)"></td>
+				<td row="1" column="1" onClick="move(this)"></td>
+				<td row="1" column="2" onClick="move(this)"></td>
+			</tr>
+			<tr>
+				<td row="2" column="0" onClick="move(this)"></td>
+				<td row="2" column="1" onClick="move(this)"></td>
+				<td row="2" column="2" onClick="move(this)"></td>
+			</tr>
+		</table>
+	</div>
+
+</body>
+</html>
