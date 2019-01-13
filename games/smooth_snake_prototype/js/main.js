@@ -1,18 +1,22 @@
 const tileCount = 13
 
+// Type for vscode to understand
 /** @type {HTMLCanvasElement} */
 let canvas
 
+// Type for vscode to understand
 /** @type {CanvasRenderingContext2D} */
 let ctx
 
 let scl
 
-let speed = 3.5
+let speed = 4.5
 
 let snake
 
 let apple
+
+let pause = false
 
 function init() {
 	canvas = document.querySelector("#canvas")
@@ -28,6 +32,8 @@ function init() {
 }
 
 function loop() {
+	if (pause) return
+
 	// Background
 	ctx.fillStyle = "black"
 	ctx.fillRect(0, 0, canvas.width, canvas.height)

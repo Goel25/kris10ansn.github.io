@@ -65,6 +65,13 @@ class Snake {
 			this.head.dir.x = this.dir.x
 			this.head.dir.y = this.dir.y
 
+			for(let i = 1; i < this.length; i++) {
+				if(this.head.collides(this.body[i])) {
+					console.log("IMPROVE THIS. TEST PURPOSE ONLY.")
+					pause = true
+				}
+			}
+
 			for(let i = this.length-1; i > 0; i--) {
 				this.body[i].dir.x = (this.body[i-1].x - this.body[i].x)/scl
 				this.body[i].dir.y = (this.body[i-1].y - this.body[i].y)/scl
