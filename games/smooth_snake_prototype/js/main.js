@@ -1,22 +1,25 @@
-const tileCount = 13
 
-// Type for vscode to understand
+// Types are for vscode to understand
+
 /** @type {HTMLCanvasElement} */
 let canvas
 
-// Type for vscode to understand
 /** @type {CanvasRenderingContext2D} */
 let ctx
 
-let scl
-
-let speed = 4.5
-
+/** @type {Snake} */
 let snake
 
+/** @type {Apple} */
 let apple
 
+let scl
+
+let speed = 5.25
+
 let pause = false
+
+const tileCount = 13
 
 function init() {
 	canvas = document.querySelector("#canvas")
@@ -44,19 +47,12 @@ function loop() {
 	snake.draw()
 
 	if(snake.head.collides(apple)) {
+		// Generates new position for the apple and
+		// appends new bodypart to tail if the head hits/eats the apple
 		apple.generateNew()
 		snake.appendNew()
 	}
-	
-	// Debug
-	// if(keys['p'])
-	// 	ctx = null
 }
 
 // Init function will get called when the site is fully loaded
 window.onload = init
-
-// Useful function
-Array.prototype.last = function() {
-	return this[this.length-1]
-}
