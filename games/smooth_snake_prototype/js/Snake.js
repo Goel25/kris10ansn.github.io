@@ -30,12 +30,14 @@ class Snake {
 		this.newDir = { x: 0, y:0 }
 
 		// Loading images
-		this.face = new Image()
-		this.face.src = "images/head.png"
+		this.greenFace = new Image()
+		this.greenFace.src = "images/head.png"
 
 		this.redFace = new Image()
 		this.redFace.src = "images/redHead.png"
 		//
+
+		this.face = this.greenFace
 		
 		for (var i = 0; i < length; i++) {
 			this.body.push(
@@ -45,7 +47,9 @@ class Snake {
 	}
 
 	update() {
-		
+		if (this.isDead)
+			return
+			
 		// Stores new direction to a variable, so that when the snake has passed a full tile
 		// it can change direction. If it would've directly set the direction the snake 
 		// could've turned mid-tile (not good)
@@ -77,7 +81,7 @@ class Snake {
 		
 		if((this.head.x / scl).toFixed(1).substr(-1) == 0 && (this.head.y / scl).toFixed(1).substr(-1) == 0) {
 			// Stuff that should only happen when the snake has come to an around tile number
-			if(this.checkDeath())
+			if(this.checkDeath() && !this.isDead)
 				// Returns the return val of die (undefined).
 				// Shortcut so i dont have to write mutliple lines (this comment kind of defeats the purpose)
 				return this.die()
@@ -149,8 +153,21 @@ class Snake {
 	}
 
 	die() {
-		// TODO: IMPLEMENT
-		pause = true
+		this.isDead = true
+
+		let previousColor = this.color
+
+		this.color = "red"
+		this.face = this.redFace
+
+		setTimeout(() => {
+			this.color = previousColor;
+			this.face = this.greenFace
+			setTimeout(() => {
+				this.color = 'red';
+				this.face = this.redFace
+			}, 200)
+		}, 200)
 	}
 
 	// Useful getters. The names talk for themselves

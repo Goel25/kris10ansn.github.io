@@ -4,7 +4,12 @@ const mouse = { x: 0, y: 0, isDown: false };
 const mousePressed = (e) => mouse.isDown = true;
 const mouseReleased = (e) => mouse.isDown = false;
 
-const keyPressed = (e) => keys[e.key] = true;
+const keyPressed = (e) => {
+    if(snake.isDead)
+        window.location.reload()
+    
+    keys[e.key] = true;
+}
 const keyReleased = (e) => keys[e.key] = false;
 
 document.addEventListener("keydown", keyPressed);
