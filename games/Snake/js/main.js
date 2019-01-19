@@ -1,142 +1,87 @@
-const fps = 7, scl = 80;
-var canvas, ctx, tilecount = 18, snake, xc, yc, end = false, ared = 'rgb(255, 50, 50)', score = 0, hscore = 0,
-	apple = {
-		x: tilecount - Math.round(tilecount/4),
-		y: tilecount/2,
-		color: ared,
-		new: function() {
-			this.x = Math.round(Math.random()*(tilecount - 1));
-			this.y = Math.round(Math.random()*(tilecount - 1));
 
-			for(let i = 0; i < blocks.length; i++) {
-				if(this.x == blocks[i].x && this.y == blocks[i].y) {
-					this.new();
-				}
-			}
-		},
-		draw() {
-			ctx.fillStyle = this.color;
-			ctx.fillRect(this.x * scl, this.y * scl, scl, scl);
-		}
-	};
+// Types are for vscode to understand
 
-window.onload = function() {
-	canvas = document.getElementById('canvas');
-	ctx = canvas.getContext('2d');
+/** @type {HTMLCanvasElement} */
+let canvas
 
-	canvas.width = canvas.height = scl * tilecount;
+/** @type {CanvasRenderingContext2D} */
+let ctx
 
-	snake = new Snake(Math.round(tilecount/3));
+/** @type {Snake} */
+let snake
 
-	if(localStorage._hscore != null && localStorage._hscore != "undefined") { hscore = localStorage._hscore; } else { hscpre = localStorage._hscore = 0; }
+/** @type {Apple} */
+let apple
 
-	document.addEventListener('keydown', keyPressed);
-	setInterval(game, 1000/fps);
+/** @type {StorageHandler} */
+let storage
+
+let highscore
+let score = 0
+
+const tileCount = 11
+let scl
+
+let speed = 7
+let pause = false
+
+
+function init() {
+	canvas = document.querySelector("#canvas")
+	ctx = canvas.getContext("2d")
+
+	storage = new StorageHandler()
+
+	scl = canvas.width/tileCount
+
+	apple = new Apple(6, Math.floor(tileCount/2), 5)
+	snake = new Snake(4, Math.floor(tileCount/2), 3, "rgb(50, 255, 50)")
+
+	highscore = storage._hscore || 0
+
+	setInterval(loop, 1000/90)
 }
 
 
-function game() {
-	if(end) { return; }
+// Press any key to restart is implemented in keypressed function in events.js
 
-	ctx.fillStyle = 'black';
-	ctx.fillRect(0, 0, canvas.width, canvas.height);
+function loop() {
+	if (pause) return
 
-	xc=yc=false;
+	// Background
+	ctx.fillStyle = "black"
+	ctx.fillRect(0, 0, canvas.width, canvas.height)
 
-	apple.draw();
+	apple.draw()
+	
+	snake.update()
+	snake.draw()
 
-	snake.update();
-	snake.draw();
+	drawText()
 
-	drawScore();
-
-	if(snake.x >= tilecount 
-		|| snake.x < 0 
-		|| snake.y >= tilecount 
-		|| snake.y < 0
-		|| snake.hitsTail()) { 
-
-		snake.die();
-		end = true;
-
-		return;
+	if(snake.head.collides(apple)) {
+		// Generates new position for the apple and
+		// appends new bodypart to tail if the head hits/eats the apple
+		apple.generateNew()
+		snake.appendNew()
+		score++
 	}
 
-	if(snake.x == apple.x && snake.y == apple.y) {
-		snake.eat();
-		apple.new();
-		score++;
+	if(score > highscore) {
+		highscore = score
+		storage._hscore = highscore
 	}
-
 }
 
-function drawScore() {
-	if(score > hscore) { hscore = score; localStorage._hscore = hscore; }
-	if(hscore > localStorage._hscore) { localStorage._hscore = hscore; }
-
-	ctx.font = scl*2 + 'px Arial';
+function drawText() {
+	ctx.font = scl*1.5 + 'px Arial';
 	ctx.fillStyle = '#fff';
 	ctx.fillText(score, canvas.width/2 - ctx.measureText(score).width/2, scl*2.5);
 
 	ctx.font = scl*0.5 + 'px Arial';
 	ctx.fillStyle = '#fff';
-	ctx.fillText('High score: ' + hscore, canvas.width/2 - ctx.measureText('High score: ' + hscore).width/2, scl*3.5);
+	ctx.fillText('High score: ' + highscore, canvas.width/2 - ctx.measureText('High score: ' + highscore).width/2, scl*3.5);
 }
 
-function keyPressed(event) {
-	if(end) { location.reload(); }
-
-	let code = event.keyCode;
-
-	switch (code) {
-
-		//left
-		case 37:
-			if(yc || (snake.xv == 0 && snake.yv == 0)) { return; }
-
-			snake.left();
-			break;
-		case 65:
-			if(yc || (snake.xv == 0 && snake.yv == 0)) { return; }
-
-			snake.left();
-			break;
-		
-		//up
-		case 38:
-			if(xc) { return; }
-
-			snake.up();
-			break;
-		case 87:
-			if(xc) { return; }
-
-			snake.up();
-			break;
-
-		//right
-		case 39:
-			if(yc) { return; }
-
-			snake.right();
-			break;
-		case 68:
-			if(yc) { return; }
-
-			snake.right();
-			break;
-
-		//down
-		case 40:
-			if(xc) { return; }
-
-			snake.down();
-			break;
-		case 83:
-			if(xc) { return; }
-
-			snake.down();
-			break;
-
-	}
-}
+// Init function will get called when the site is fully loaded
+window.onload = init

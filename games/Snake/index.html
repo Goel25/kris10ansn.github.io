@@ -1,25 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html style = "background-color: #333;">
 <head>
-
-	<meta name="description" content="The authentic snake game from the 1970s.">
-    <meta name="author" content="Kristian Silli Nessa">
-    <link rel="icon" href="">
-	<title>Snake!</title>
-
-	<script type="text/javascript" src="js/snake.js"></script>
-	<script type="text/javascript" src="js/main.js"></script>
-</head>
-<body>
-
-	<canvas id="canvas" width="540" height="540" style="
+	<style>
+	#canvas {
 		padding-left: 0;
 	    padding-right: 0;
 	    margin-left: auto;
 	    margin-right: auto;
 	    display: block;
-		height: 98vh;	">
-	</canvas>
-
+		height: 96vh;
+	}
+	</style>
+</head>
+<body>
+	<canvas id="canvas" width="1000" height="1000"></canvas>
+	<script src="js/StorageHandler.js"></script>
+	<script src="js/events.js"></script>
+	<script src="js/Snake.js"></script>
+	<script src="js/Apple.js"></script>
+	<script src="js/main.js"></script>
 </body>
 </html>

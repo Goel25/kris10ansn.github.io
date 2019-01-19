@@ -1,137 +1,182 @@
-var blocks = [], green = 'rgb(50, 255, 50)', color = green;
-
-class Snake {
-	constructor(length) {
-		this.x = tilecount/2 - length - 1;
-		this.y = tilecount/2;
-
-		this.xv = 0;
-		this.yv = 0;
-
-		for(let i = length-1; i >= 0; i--) {
-			blocks.push(new Block(this.x + i, this.y));
-		}
+class BodyPart {
+	constructor(x, y, dir) {
+		this.x = x
+		this.y = y
+		this.dir = dir
 	}
 
-	draw() {
-		for(let i = 0; i < blocks.length; i++) {
-			if(i == 0) {
-				blocks[0].drawHead();
-				continue;
-			}
+	collides(it) {
+		// Checks if both objects are on the same tile
+		return (this.xx == it.xx) && (this.yy == it.yy)
+	}
 
-			blocks[i].draw();
+	// Getters for tile x and y
+
+	get xx() { return Math.round(this.x/scl) }
+	get yy() { return Math.round(this.y/scl) }
+
+	//
+}
+
+class Snake {
+	constructor(x, y, length, color) {
+		this.x = x
+		this.y = y
+		this.color = color
+
+		this.body = []
+
+		this.dir = { x: 0, y:0 }
+		this.newDir = { x: 0, y:0 }
+
+		// Loading images
+		this.greenFace = new Image()
+		this.greenFace.src = "images/head.png"
+
+		this.redFace = new Image()
+		this.redFace.src = "images/redHead.png"
+		//
+
+		this.face = this.greenFace
+		
+		for (var i = 0; i < length; i++) {
+			this.body.push(
+				new BodyPart((this.x-i) * scl, this.y*scl, { x: 1, y: 0 })
+			)
 		}
 	}
 
 	update() {
-		if(this.xv == 0 && this.yv == 0) { return; }
-
-		let newX = blocks[0].x + this.xv, 
-			newY = blocks[0].y + this.yv;
-
-		for(let i = 0; i < blocks.length; i++) {
-			let prevX = blocks[i].x, 
-				prevY = blocks[i].y;
-
-			blocks[i].x = newX;
-			blocks[i].y = newY;
-
-			blocks[i].xv = newX - prevX;
-			blocks[i].yv = newY - prevY;
-
-			newX = prevX;
-			newY = prevY;
+		if (this.isDead)
+			return
+			
+		// Stores new direction to a variable, so that when the snake has passed a full tile
+		// it can change direction. If it would've directly set the direction the snake 
+		// could've turned mid-tile (not good)
+		if((keys['a'] || keys['A'] || keys['ArrowLeft']) && this.dir.x == 0) {
+			this.newDir.x = -1
+			this.newDir.y = 0
 		}
+		if((keys['d'] || keys['D'] || keys['ArrowRight']) && this.dir.x == 0) {
+			this.newDir.x = 1
+			this.newDir.y = 0
+		}
+		if((keys['s'] || keys['S'] || keys['ArrowDown']) && this.dir.y == 0) {
+			this.newDir.y = 1
+			this.newDir.x = 0
+		}
+		if((keys['w'] || keys['W'] || keys['ArrowUp']) && this.dir.y == 0) {
+			this.newDir.y = -1
+			this.newDir.x = 0
+		}
+		// ...
+		// ..
+		// .
 
-		this.x = blocks[0].x;
-		this.y = blocks[0].y;
-	}
+		// If all directions are zero, the game hasn't started yet (unless some stupid bug i
+		// havent discovered yet happens). Therefore the snake shouldnt start moving, and
+		// it returns out of the function
+		if(this.dir.x == 0 && this.dir.y == 0 && this.newDir.x == 0 && this.newDir.y == 0)
+			return;
+		
+		if((this.head.x / scl).toFixed(1).substr(-1) == 0 && (this.head.y / scl).toFixed(1).substr(-1) == 0) {
+			// Stuff that should only happen when the snake has come to an around tile number
+			if(this.checkDeath() && !this.isDead)
+				// Returns the return val of die (undefined).
+				// Shortcut so i dont have to write mutliple lines (this comment kind of defeats the purpose)
+				return this.die()
 
-	eat() {
-		let l = blocks.length-1;
-		blocks.push( new Block( blocks[l].x + blocks[l].xv , blocks[l].y + blocks[l].yv ) );
-	}
+			// Checks if a move in the new direction will result in the head hitting its own neck
+			// Sets heads and snakes direction to it if it doesn't
+			if(!(this.body[1].xx == this.head.xx + this.newDir.x && this.body[1].yy == this.head.yy + this.newDir.y)) {
+				this.dir.x = this.newDir.x
+				this.dir.y = this.newDir.y
 
-	hitsTail() {
-		for(let i = 2; i < blocks.length; i++) {
-			if(blocks[0].x == blocks[i].x && blocks[0].y == blocks[i].y) {
-				return true;
+				this.head.dir.x = this.dir.x
+				this.head.dir.y = this.dir.y
+			}
+
+			// Sets direction of each bodypart (except for the head) to point to the next bodypart
+			for(let i = this.length-1; i > 0; i--) {
+				this.body[i].dir.x = (this.body[i-1].x - this.body[i].x)/scl
+				this.body[i].dir.y = (this.body[i-1].y - this.body[i].y)/scl
 			}
 		}
-		return false;
+
+		// Moves each bodyparts according to its direction object and the speed variable
+		this.body.forEach (it => {
+			it.x += it.dir.x * speed
+			it.y += it.dir.y * speed
+		})
+	}
+	
+	draw() {
+		this.body.forEach(it => {
+			// Fills rect on each bodypart's position
+			ctx.fillStyle = this.color
+			ctx.fillRect(it.x, it.y, scl, scl)
+
+			// Draws hitbox if shift key is pressed (for debugging)
+			if(keys['Shift']) {
+				ctx.strokeStyle = "red"
+				ctx.strokeRect(it.xx*scl, it.yy*scl, scl, scl)
+			}
+		});
+
+		// Draws face at the head's position (logical unless you're some kind of alien)
+		ctx.drawImage(this.face, this.head.x, this.head.y, scl, scl)
+	}
+
+	// Function to append new bodypart to end of tail
+	appendNew() {
+		let last = this.tail
+		this.body.push(
+			// Adds new bodypart at the last bodyparts position
+			// (it will eventually "pop" out)
+			// The direction values are 0 since they're irrelevant. The part will pop out anyway
+			new BodyPart(last.x, last.y, { x: 0, y: 0 })
+		)
+	}
+
+	checkDeath() {
+		// Checks if head is out of bounds. (I think this is readable)
+		if(this.head.xx >= tileCount || this.head.yy >= tileCount || this.head.xx < 0 || this.head.yy < 0)
+			return true
+
+		// Checks if the head collides with any other body part
+		for (let i = 1; i < this.length; i++) {
+			if (this.head.collides(this.body[i]))
+				return true
+		}
+
+		return false
 	}
 
 	die() {
-		color = 'red';
-		this.draw();
+		this.isDead = true
 
-		setTimeout(() => { color = green; this.draw(); blocks[0].drawHead(); setTimeout(() => { color = 'red'; this.draw(); blocks[0].drawHead(); }, 200) }, 200)
+		let previousColor = this.color
+
+		this.color = "red"
+		this.face = this.redFace
+
+		setTimeout(() => {
+			this.color = previousColor;
+			this.face = this.greenFace
+			setTimeout(() => {
+				this.color = 'red';
+				this.face = this.redFace
+			}, 200)
+		}, 200)
 	}
 
-	up() {
-		if(this.yv !== 0) { return; }
-		yc = true;
+	// Useful getters. The names talk for themselves
 
-		this.yv = -1;
-		this.xv = 0;
-	}
+	get length() { return this.body.length }
+	get head() { return this.body[0] }
+	get tail() { return this.body[this.body.length-1] }
+	get xx() { return this.head.xx }
+	get yy() { return this.head.yy }
 
-	down() {
-		if(this.yv !== 0) { return; }
-		yc = true;
-
-		this.yv = 1;
-		this.xv = 0;
-	}
-
-	left() {
-		if(this.xv !== 0) { return; }
-		xc = true;
-
-		this.yv = 0;
-		this.xv = -1;
-	}
-
-	right() {
-		if(this.xv !== 0) { return; }
-		xc = true;
-
-		this.yv = 0;
-		this.xv = 1;
-	}
-}
-
-class Block {
-	constructor(x, y) {
-		this.x = x;
-		this.y = y;
-
-		this.xv = 0;
-		this.yv = 0;
-
-		this.color = green;
-
-		this.head = new Image();
-		this.head.src = 'images/head.png';
-	}
-
-	draw() {
-		ctx.fillStyle = color;
-		ctx.fillRect(this.x*scl, this.y*scl, scl, scl);
-		// ctx.strokeStyle = 'black';
-		// ctx.strokeRect(this.x*scl, this.y*scl, scl, scl);
-	}
-
-	drawHead() {
-		if(color == green) {
-			this.head.src = 'images/head.png'
-		} else {
-			this.head.src = 'images/redHead.png'
-		}
-		ctx.drawImage(this.head, this.x * scl, this.y * scl, scl, scl);
-
-		// ctx.strokeStyle = 'black';
-		// ctx.strokeRect(this.x*scl, this.y*scl, scl, scl);
-	}
+	//
 }
