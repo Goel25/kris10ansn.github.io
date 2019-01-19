@@ -19,10 +19,10 @@ let storage
 let highscore
 let score = 0
 
-const tileCount = 11
+const tileCount = 13
 let scl
 
-let speed = 7
+let speed = 6
 let pause = false
 
 
@@ -34,7 +34,7 @@ function init() {
 
 	scl = canvas.width/tileCount
 
-	apple = new Apple(6, Math.floor(tileCount/2), 5)
+	apple = new Apple(9, Math.floor(tileCount/2), 5)
 	snake = new Snake(4, Math.floor(tileCount/2), 3, "rgb(50, 255, 50)")
 
 	highscore = storage._hscore || 0

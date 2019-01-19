@@ -53,19 +53,19 @@ class Snake {
 		// Stores new direction to a variable, so that when the snake has passed a full tile
 		// it can change direction. If it would've directly set the direction the snake 
 		// could've turned mid-tile (not good)
-		if((keys['a'] || keys['A'] || keys['ArrowLeft']) && this.dir.x == 0) {
+		if((keys['a'] || keys['ArrowLeft']) && this.dir.x == 0) {
 			this.newDir.x = -1
 			this.newDir.y = 0
 		}
-		if((keys['d'] || keys['D'] || keys['ArrowRight']) && this.dir.x == 0) {
+		if((keys['d'] || keys['ArrowRight']) && this.dir.x == 0) {
 			this.newDir.x = 1
 			this.newDir.y = 0
 		}
-		if((keys['s'] || keys['S'] || keys['ArrowDown']) && this.dir.y == 0) {
+		if((keys['s'] || keys['ArrowDown']) && this.dir.y == 0) {
 			this.newDir.y = 1
 			this.newDir.x = 0
 		}
-		if((keys['w'] || keys['W'] || keys['ArrowUp']) && this.dir.y == 0) {
+		if((keys['w'] || keys['ArrowUp']) && this.dir.y == 0) {
 			this.newDir.y = -1
 			this.newDir.x = 0
 		}
