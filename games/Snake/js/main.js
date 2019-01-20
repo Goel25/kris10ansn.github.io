@@ -1,4 +1,3 @@
-
 // Types are for vscode to understand
 
 /** @type {HTMLCanvasElement} */
@@ -84,4 +83,5 @@ function drawText() {
 }
 
 // Init function will get called when the site is fully loaded
+
 window.onload = init
