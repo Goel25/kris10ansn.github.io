@@ -8,9 +8,9 @@ const keyPressed = (e) => {
     if(snake.isDead)
         window.location.reload()
     
-    keys[e.key] = true;
+    keys[e.key.toLowerCase()] = true;
 }
-const keyReleased = (e) => keys[e.key] = false;
+const keyReleased = (e) => keys[e.key.toLowerCase()] = false;
 
 document.addEventListener("keydown", keyPressed);
 document.addEventListener("keyup", keyReleased);
