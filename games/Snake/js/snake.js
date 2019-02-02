@@ -1,4 +1,5 @@
- class BodyPart {a	constructor(x, y, dir) {
+ class BodyPart {
+	constructor(x, y, dir) {
 		this.x = x
 		this.y = y
 		this.dir = dir
