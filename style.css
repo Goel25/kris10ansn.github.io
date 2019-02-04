@@ -234,7 +234,7 @@ div#content {
 	width: calc(100% - 16vw);
 }
 
-div#games p {
+div#projects p {
 	font-size: 23px;
 	text-align: center;
 }
@@ -246,7 +246,7 @@ div#content h3 {
 	text-align: center;
 }
 
-table.game-container h4 {
+table.project-container h4 {
 	font-size: 27px;
 	text-align: center;
 	vertical-align: top;
@@ -254,17 +254,17 @@ table.game-container h4 {
 	margin: 5%;
 }
 
-table.game-container {
+table.project-container {
 	width: 100%;
 }
 
-table.game-container tr {
+table.project-container tr {
 	display: flex;
 	justify-content: space-evenly;
 	flex-wrap: wrap;
 }
 
-table.game-container td {
+table.project-container td {
 	position: relative;
 	width: 23vw;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
@@ -273,19 +273,19 @@ table.game-container td {
 }
 
 
-table.game-container img {
+table.project-container img {
 	width: 20%;
 	margin-left: calc(50% - 10%);
 	margin-top: 10%;
 }
 
-table.game-container p {
+table.project-container p {
 	padding: 4%;
 	padding-bottom: 6%;
 }
 
 @media only screen and (max-width: 1400px) {
-	table.game-container td {
+	table.project-container td {
 		width: 300px;
 		/* height: 300px; */
 		/* height: fit-content; */
@@ -293,13 +293,13 @@ table.game-container p {
 }
 
 @media only screen and (max-width: 1316px) {
-	table.game-container td {
+	table.project-container td {
 		width: 30vw;
 	}
 }
 
 @media only screen and (max-width: 870px) {
-	table.game-container td {
+	table.project-container td {
 		position: relative;
 		width: 70%;
 		font-size: 15px;
@@ -329,17 +329,17 @@ table.game-container p {
 	div#content h3 {
 		font-size: 30px;
 	}
-	table.game-container h4 {
+	table.project-container h4 {
 		font-size: 20px;
 	}
 
-	table.game-container p {
+	table.project-container p {
 		font-size: 17px;
 	}
 }
 
 @media only screen and (max-width: 550px) {
-	table.game-container td {
+	table.project-container td {
 		position: relative;
 		width: 90%;
 	}
