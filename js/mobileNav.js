@@ -32,7 +32,7 @@ hamburger.onclick = function(e) {
 		setTimeout(()=>{
 			mobilenav.toggleAttribute('hide')
 			mobilenav.toggleAttribute('slideout')
-		}, slideoutSpeed)
+		}, slideoutSpeed - 10)
 
 		title.toggleAttribute('hide')
 		title.toggleAttribute('fadeInText')
